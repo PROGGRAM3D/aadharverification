@@ -54,19 +54,19 @@ function App() {
         const { data } = await axios.request(options);
         console.log(data);
         setAadharData(data.data.aadhaar_data);
-        console.log(aadharData.name);
       } catch (error) {
         console.error(error);
       }
     }
 
   return (
-    <div>
+    <div className='wrapper'>
       <h2>Aadhar Form</h2>
       <form>
         <input
         type = "number"
         value = {aadharNumber}
+        placeholder='Enter Aadhaar Number'
         onChange = {(e) => setAadharNumber(e.target.value)} />
         
         <button onClick={SendOtp}>SUBMIT</button>
@@ -75,6 +75,7 @@ function App() {
       <input 
       type="number"
       value = {OtpCall}
+      placeholder='Enter OTP'
       onChange={(e) => setOtpCall(e.target.value)}
       >
       </input>
@@ -87,21 +88,15 @@ function App() {
 /> */}
     {aadharData ? (
   <>
-    <h1>Aadhaar Name: {aadharData.name || 'N/A'}</h1>
-    <br />
-    <h1>Locality: {aadharData.locality || 'N/A'}</h1>
-    <br />
-    <h1>DOB: {aadharData.date_of_birth || 'N/A'}</h1>
-    <br />
+    <h4>Aadhaar Name: {aadharData.name || 'N/A'}</h4>
+    <h4>Locality: {aadharData.locality || 'N/A'}</h4>
+    <h4>DOB: {aadharData.date_of_birth || 'N/A'}</h4>
   </>
 ) : (
   <>
-    <h1>Aadhaar Name: N/A</h1>
-    <br />
-    <h1>Locality: N/A</h1>
-    <br />
-    <h1>DOB: N/A</h1>
-    <br />
+    <h4>Aadhaar Name: N/A</h4>
+    <h4>Locality: N/A</h4>
+    <h4>DOB: N/A</h4>
   </>
 )}
 
